@@ -1,4 +1,5 @@
 #include "volume.h"
+#include <algorithm>
 
 int getMaxVolume(int a, int b, int c, int n, int* arr) {
     int maxV = 0;
