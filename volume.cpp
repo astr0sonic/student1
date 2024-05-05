@@ -9,7 +9,7 @@ int getMaxVolume(int a, int b, int c, int n, int* arr) {
     {
         for (int j = i + 1; j < n; ++j)
         {
-            if (arr[i] <= c && arr[j] <= c)
+            if (arr[i] <= c || arr[j] <= c)
             {
                 h = std::min(arr[i], arr[j]);
                 if (j - i <= a)  w = j - i;
