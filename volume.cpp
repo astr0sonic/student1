@@ -12,13 +12,15 @@ int getMaxVolume(int a, int b, int c, int n, int* arr) {
             if (arr[i] <= c || arr[j] <= c)
             {
                 h = std::min(arr[i], arr[j]);
-                if (j - i <= a)  w = j - i;
-                int l = b;
-                int volume = l * w * h;
-                if (volume <= a * b * c) maxV = std::max(maxV, volume);
+                if (j - i <= a)
+                {
+                    w = j - i;
+                    int l = b;
+                    int volume = l * w * h;
+                    if (volume <= a * b * c) maxV = std::max(maxV, volume);
+                }
             }
         }
     }
-
     return maxV;
 }
