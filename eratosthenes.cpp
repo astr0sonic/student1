@@ -1,7 +1,7 @@
 #include "eratosthenes.h"
 #include <iostream>
 #include<vector>
-#include<cstring>
+#include<string>
 std::vector<int> sieve(int n) {
     std::vector<int> primes;
     primes.push_back(2);
