@@ -2,7 +2,8 @@
 #include <iostream>
 #include<vector>
 #include<cstring>
-std::vector<int> sieve(int n) {
+std::vector<int> sieve(int n)
+{
     std::vector<int> primes;
     bool* prime;
     prime = new bool[n + 1];
@@ -19,5 +20,7 @@ std::vector<int> sieve(int n) {
     {
         if (prime[p]) primes.push_back(p);
     }
+    delete[]prime;
     return primes;
+
 }
