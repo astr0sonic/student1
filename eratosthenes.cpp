@@ -4,7 +4,6 @@
 #include<cstring>
 std::vector<int> sieve(int n) {
     std::vector<int> primes;
-    primes.push_back(2);
     bool* prime;
     prime = new bool[n + 1];
     memset(prime, true, sizeof(prime));
