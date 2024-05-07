@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
     ofstream out(argv[2]);
     
     vector<int>::iterator it = primes.begin();
-    out << *it;
+    out <<" "<< * it;
     it++;
 
     for (; it != primes.end(); it++) {
