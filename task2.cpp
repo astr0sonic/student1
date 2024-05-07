@@ -1,6 +1,6 @@
 #include <fstream>
 #include "eratosthenes.h"
-#include<string>
+#include<cstring>
 using namespace std;
 
 int main(int argc, char** argv) {

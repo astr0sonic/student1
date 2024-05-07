@@ -1,3 +1,3 @@
 #include <vector>
-#include<string>
+#include<cstring>
 std::vector<int> sieve(int n);
