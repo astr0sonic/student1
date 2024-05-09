@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\tasks",
+    "\\tasks\\task2"
   ],
-  "SelectedNode": "\\C:\\Users\\User\\OneDrive\\Документы\\student1",
+  "SelectedNode": "\\eratosthenes.h",
   "PreviewInSolutionExplorer": false
 }

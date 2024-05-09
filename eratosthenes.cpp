@@ -18,7 +18,7 @@ std::vector<int> sieve(int n)
     }
     for (int p = 2; p <= n; p++)
     {
-        if (prime[p]) primes.push_back(p);
+        if (prime[p]==true) primes.push_back(p);
     }
     delete[]prime;
     return primes;
