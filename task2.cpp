@@ -1,6 +1,6 @@
 #include <fstream>
 #include "eratosthenes.h"
-#include<cstring>
+
 using namespace std;
 
 int main(int argc, char** argv) {
@@ -14,15 +14,12 @@ int main(int argc, char** argv) {
 
     ofstream out(argv[2]);
 
+    vector<int>::iterator it = primes.begin();
+    out << *it;
+    it++;
 
-    if (!primes.empty()) {
-        auto it = primes.begin();
-        out << " " << *it;
-        it++;
-
-        for (; it != primes.end(); it++) {
-            out << ", " << *it;
-        }
+    for (; it != primes.end(); it++) {
+        out << ", " << *it;
     }
     out << endl;
     out.close();
