@@ -1,4 +1,6 @@
 #include "max_value.h"
+#include <algorithm> 
+#include <cmath> 
 double calculateMaxValue(double* nums, int n) 
     {
         double max_val = nums[0];
