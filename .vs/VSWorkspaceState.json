@@ -2,8 +2,9 @@
   "ExpandedNodes": [
     "",
     "\\tasks",
+    "\\tasks\\task1",
     "\\tasks\\task2"
   ],
-  "SelectedNode": "\\eratosthenes.h",
+  "SelectedNode": "\\tasks\\task1\\task1.cpp",
   "PreviewInSolutionExplorer": false
 }
