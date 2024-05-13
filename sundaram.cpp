@@ -1,5 +1,6 @@
 #include "sundaram.h"
-
+#include<string>
+#include<vector>
 std::vector<int> sieve(int n) {
     std::vector<int> primes;
     int nNew = (n - 1) / 2;
