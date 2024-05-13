@@ -1,5 +1,5 @@
 #include "sundaram.h"
-#include<string>
+#include<cstring>
 #include<vector>
 std::vector<int> sieve(int n) {
     std::vector<int> primes;
