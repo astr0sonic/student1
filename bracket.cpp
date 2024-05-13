@@ -4,8 +4,8 @@
 bool checkBrackets(const std::string& s)
 {
 	bool uslovie = true;
-	vector<char> scobki;
-	vector<char> alpha;
+	std::vector<char> scobki;
+	std::vector<char> alpha;
 	int q = 0;
 	int i = 0;
 	while (s[i] != s.length() && uslovie == true)
