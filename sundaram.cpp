@@ -14,6 +14,7 @@ std::vector<int> sieve(int n) {
             marked[i + j + 2 * i * j] = true;
         }
     }
+    if (n > 2)primes.push_back(2);
     for (int i = 1; i <= nNew; i++)
     {
         if (marked[i] == false)
