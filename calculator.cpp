@@ -66,17 +66,26 @@ double calculate(const std::string& expr) {
         }
         else if (std::isdigit(expr[i]) || (expr[i] == '-' && lastWasOperator)) {
             if (expr[i] == '-') {
-                values.push(-1);
-                operators.push('*');
+                if (expr[i] == '-') {
+                    size_t j = i + 1;
+                    while (j < expr.length() && (std::isdigit(expr[j]) || expr[j] == '.')) {
+                        ++j;
+                    }
+                    values.push(-1 * std::stod(expr.substr(i + 1, j - i - 1)));
+                    i = j - 1;
+                    lastWasOperator = false;
+                }
+
+            }
+            else {
+                double num = std::stod(expr.substr(i));
+                while (i < expr.length() && (std::isdigit(expr[i]) || expr[i] == '.')) {
+                    ++i;
+                }
+                --i;
+                values.push(num);
                 lastWasOperator = false;
             }
-            double num = std::stod(expr.substr(i));
-            while (i < expr.length() && (std::isdigit(expr[i]) || expr[i] == '.')) {
-                ++i;
-            }
-            --i;
-            values.push(num);
-            lastWasOperator = false;
         }
         else if (expr[i] == '(') {
             operators.push(expr[i]);
@@ -122,12 +131,14 @@ double calculate(const std::string& expr) {
 
     return values.top();
 }
-bool isValidExpression(const std::string& expr)
-{
+
+bool isValidExpression(const std::string& expr) {
     int balance = 0;
     bool lastWasOperator = true;
 
-    for (char c : expr) {
+    for (size_t i = 0; i < expr.length(); ++i) {
+        char c = expr[i];
+
         if (c == '(') {
             ++balance;
             lastWasOperator = true;
@@ -137,21 +148,24 @@ bool isValidExpression(const std::string& expr)
             lastWasOperator = false;
         }
         else if (isOperator(c)) {
-            if (lastWasOperator)
+            if (lastWasOperator && c != '-')
                 return false;
             lastWasOperator = true;
         }
         else if (std::isdigit(c) || c == '.' || c == ' ') {
             lastWasOperator = false;
         }
-        else
-        {
-         
+        else {
+
+            if (c == '-' && (i == 0 || expr[i - 1] == '('))
+                continue;
+            if (c == '-' && i > 0 && std::isspace(expr[i - 1]))
+                continue;
             return false;
         }
     }
 
     return balance == 0 && !lastWasOperator;
-  
 }
+
 
