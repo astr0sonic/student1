@@ -3,7 +3,6 @@
 #include <stack>
 #include <cctype>
 #include <cmath>
-
 bool isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
@@ -48,10 +47,9 @@ double calculate(const std::string& expr) {
         if (expr[i] == ' ') {
             continue;
         }
-        else if (std::isdigit(expr[i])) {
-            double num = 0;
+        else if (std::isdigit(expr[i]) || expr[i] == '.') {
+            double num = std::stod(expr.substr(i));
             while (i < expr.length() && (std::isdigit(expr[i]) || expr[i] == '.')) {
-                num = num * 10 + (expr[i] - '0');
                 ++i;
             }
             --i;
@@ -70,10 +68,12 @@ double calculate(const std::string& expr) {
                 operators.pop();
                 values.push(applyOperation(a, b, op));
             }
-            operators.pop(); 
+            operators.pop();
         }
         else if (isOperator(expr[i])) {
             while (!operators.empty() && precedence(operators.top()) >= precedence(expr[i])) {
+                if (precedence(operators.top()) == precedence(expr[i]) && expr[i] != '^') 
+                    break;
                 double b = values.top();
                 values.pop();
                 double a = values.top();
@@ -84,7 +84,6 @@ double calculate(const std::string& expr) {
             }
             operators.push(expr[i]);
         }
-        
     }
 
     while (!operators.empty()) {
