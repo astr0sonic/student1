@@ -24,7 +24,7 @@ double calculateRPN(const std::string& s)
 				itog.push(x);
 			}
 			else if (s[i] == '*')
-			{cout << x << " " << itog.top() << endl;
+			{
 				x = itog.top() * x;
 				
 				itog.pop();
@@ -32,7 +32,7 @@ double calculateRPN(const std::string& s)
 			}
 			else if (s[i] == '+')
 			{
-				cout << x << " " << itog.top() << endl;
+				
 				x = itog.top() + x;
 				itog.pop();
 				itog.push(x);
@@ -47,5 +47,5 @@ double calculateRPN(const std::string& s)
 			}
 		}
 	}
-	return itog.top(
+	return itog.top();
 }
