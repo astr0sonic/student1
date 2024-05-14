@@ -13,9 +13,10 @@ int main(int argc, char** argv) {
 
     double value = 0.0;
 
-    try {
+    if (isValidExpression(expr))
+
         value = calculate(expr);
-    } catch (const exception& e) {
+    else {
         ofstream out(argv[2]);
         out << "invalid" << endl;
         out.close();
