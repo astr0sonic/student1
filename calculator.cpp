@@ -7,6 +7,12 @@ bool isOperator(char c) {
     return c == '+' || c == '-' || c == '*' || c == '/' || c == '^';
 }
 
+bool isUnary(char c, size_t pos, const std::string& expr) {
+    if (c == '-' && (pos == 0 || isOperator(expr[pos - 1]) || expr[pos - 1] == '('))
+        return true;
+    return false;
+}
+
 int precedence(char op) {
     switch (op) {
     case '+':
@@ -47,7 +53,7 @@ double calculate(const std::string& expr) {
         if (expr[i] == ' ') {
             continue;
         }
-        else if (std::isdigit(expr[i]) || expr[i] == '.') {
+        else if (std::isdigit(expr[i]) || isUnary(expr[i], i, expr)) {
             double num = std::stod(expr.substr(i));
             while (i < expr.length() && (std::isdigit(expr[i]) || expr[i] == '.')) {
                 ++i;
@@ -72,8 +78,6 @@ double calculate(const std::string& expr) {
         }
         else if (isOperator(expr[i])) {
             while (!operators.empty() && precedence(operators.top()) >= precedence(expr[i])) {
-                if (precedence(operators.top()) == precedence(expr[i]) && expr[i] != '^') 
-                    break;
                 double b = values.top();
                 values.pop();
                 double a = values.top();
@@ -98,3 +102,4 @@ double calculate(const std::string& expr) {
 
     return values.top();
 }
+
