@@ -122,7 +122,8 @@ double calculate(const std::string& expr) {
 
     return values.top();
 }
-bool isValidExpression(const std::string& expr) {
+bool isValidExpression(const std::string& expr)
+{
     int balance = 0;
     bool lastWasOperator = true;
 
@@ -140,17 +141,17 @@ bool isValidExpression(const std::string& expr) {
                 return false;
             lastWasOperator = true;
         }
-        else if (std::isdigit(c) || c == '.') {
+        else if (std::isdigit(c) || c == '.' || c == ' ') {
             lastWasOperator = false;
         }
-        else if (c == ' ') {
-            continue;
-        }
-        else {
+        else
+        {
+         
             return false;
         }
     }
 
     return balance == 0 && !lastWasOperator;
+  
 }
 
