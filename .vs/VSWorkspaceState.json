@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\tasks",
+    "\\tasks\\task5",
+    "\\tasks\\task6",
+    "\\tasks\\task7"
   ],
-  "SelectedNode": "\\C:\\Users\\User\\OneDrive\\Документы\\student1",
+  "SelectedNode": "\\task7.cpp",
   "PreviewInSolutionExplorer": false
 }
