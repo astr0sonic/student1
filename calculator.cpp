@@ -70,7 +70,7 @@ double calculate(const std::string& expr) {
                 operators.pop();
                 values.push(applyOperation(a, b, op));
             }
-            operators.pop(); // Pop '('
+            operators.pop(); 
         }
         else if (isOperator(expr[i])) {
             while (!operators.empty() && precedence(operators.top()) >= precedence(expr[i])) {
@@ -84,9 +84,7 @@ double calculate(const std::string& expr) {
             }
             operators.push(expr[i]);
         }
-        else {
-            throw std::invalid_argument("Invalid character in expression");
-        }
+        
     }
 
     while (!operators.empty()) {
