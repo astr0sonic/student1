@@ -28,6 +28,6 @@ std::vector<int> getIndices(const std::string& pattern, const std::string& str) 
 			return i - tail;
 	}
 
-	return -1;
+	return failure;
 }
 
