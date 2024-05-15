@@ -1,33 +1,58 @@
 #include "kmp.h"
+#include <vector>
+#include <string>
 
-std::vector<int> getIndices(const std::string& pattern, const std::string& str) {
-	if (str.size() == 0 || pattern.size() == 0)
-		return -1;
+std::vector<int> computeLPS(const std::string& pattern) {
+    int m = pattern.size();
+    std::vector<int> lps(m, 0);
+    int length = 0;
+    int i = 1;
 
-	std::vector<int>  failure(pattern.size());
-	std::fill(failure, failure + pattern.size(), -1);
+    while (i < m) {
+        if (pattern[i] == pattern[length]) {
+            length++;
+            lps[i] = length;
+            i++;
+        }
+        else {
+            if (length != 0) {
+                length = lps[length - 1];
+            }
+            else {
+                lps[i] = 0;
+                i++;
+            }
+        }
+    }
 
-	for (int r = 1, l = -1; r < pattern.size(); r++) {
-
-		while (l != -1 && pattern[l + 1] != pattern[r])
-			l = failure[l];
-
-		if (pattern[l + 1] == pattern[r])
-			failure[r] = ++l;
-	}
-	int tail = -1;
-	for (int i = 0; i < str.size(); i++) {
-
-		while (tail != -1 && str[i] != pattern[tail + 1])
-			tail = failure[tail];
-
-		if (str[i] == pattern[tail + 1])
-			tail++;
-
-		if (tail == pattern.size() - 1)
-			return i - tail;
-	}
-
-	return failure;
+    return lps;
 }
 
+std::vector<int> getIndices(const std::string& my_template, const std::string& text) {
+    std::vector<int> indices;
+    int m = my_template.size();
+    int n = text.size();
+    std::vector<int> lps = computeLPS(my_template);
+    int i = 0, j = 0;
+
+    while (i < n) {
+        if (my_template[j] == text[i]) {
+            j++;
+            i++;
+        }
+        if (j == m) {
+            indices.push_back(i - j);
+            j = lps[j - 1];
+        }
+        else if (i < n && my_template[j] != text[i]) {
+            if (j != 0) {
+                j = lps[j - 1];
+            }
+            else {
+                i++;
+            }
+        }
+    }
+
+    return indices;
+}
