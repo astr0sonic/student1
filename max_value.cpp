@@ -12,7 +12,7 @@ double calculateMaxValue(double* nums, int n)
 	if (k == 0 || k == 1)
 	{
 		a = nums[0];
-		for (int i = 1; i < n); i++)
+		for (int i = 1; i < n; i++)
 		{
 			b =nums[i];
 			if (a > 1 && b < 1 && b>0)
