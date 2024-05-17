@@ -2,7 +2,7 @@
 
 double calculateMaxValue(double* nums, int n)
 {
-	int a, b, c;
+	double a, b, c;
 	int k = 0;
 	for (int i = 0; i < n; i++)
 	{
