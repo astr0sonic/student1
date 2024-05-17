@@ -10,10 +10,10 @@ double calculateMaxValue(double* nums, int n)
 	}
 	if (k == 0 || k == 1)
 	{
-		a = chislo[0];
-		for (int i = 1; i < chislo.size(); i++)
+		a = nums[0];
+		for (int i = 1; i < nums.size(); i++)
 		{
-			b = chislo[i];
+			b = nums[i];
 			if (a > 1 && b < 1 && b>0)
 				a = a / b;
 			else if (a < 1 && b > 1)
@@ -29,10 +29,10 @@ double calculateMaxValue(double* nums, int n)
 	else if (k % 2 == 0)
 	{
 		
-		a = chislo[0];
-		for (int i = 1; i < chislo.size(); i++)
+		a =nums[0];
+		for (int i = 1; i < nums.size(); i++)
 		{
-			b = chislo[i];
+			b = nums[i];
 			c = b;
 			if (a > 1 && b < 0)
 				a = a * b;
@@ -72,11 +72,11 @@ double calculateMaxValue(double* nums, int n)
 	else if (k % 2 != 0)
 	{
 		int otr = 0;
-		a = chislo[0];
+		a = nums[0];
 		if (a < 0) otr++;
-		for (int i = 1; i < chislo.size(); i++)
+		for (int i = 1; i < nums.size(); i++)
 		{
-			b = chislo[i];
+			b = nums[i];
 			int c = b;
 			if (b < 0)otr++;
 			if (a > 1 && b > 1)
